@@ -1,24 +1,24 @@
 
-import { inject, Service, World, GameInstance, ViewController } from '@hology/core/gameplay';
+import { inject, Service, World, GameInstance, ViewController, AssetLoader } from '@hology/core/gameplay';
 import * as THREE from 'three';
 
 @Service()
 class Game extends GameInstance {
   private world = inject(World)
   private view = inject(ViewController)
+  private assetLoader = inject(AssetLoader)
 
   private sound = new THREE.Audio(this.view.audioListener);
 
-  onStart() {    
-    const audioLoader = new THREE.AudioLoader();
-    audioLoader.load('data/asset-resources/impactWood_heavy_001.ogg', (buffer) => {
-      this.sound.setBuffer(buffer);
-      this.sound.setLoop(false);
-      this.sound.setVolume(0.5);
-    });
+  async onStart() {    
+    const buffer = await this.assetLoader.getAudioAtPath('data/asset-resources/impactWood_heavy_001.ogg')
+    this.sound.setBuffer(buffer).setVolume(0.5)
   }
 
   playSound() {
+    if (this.sound.isPlaying) {
+      this.sound.stop()
+    }
     this.sound.play();
   }
 }
