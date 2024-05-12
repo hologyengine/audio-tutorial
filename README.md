@@ -1,4 +1,4 @@
-# Hology Engine Animation Examples
+# Hology Engine Audio Examples
 
 This repo is a Hology Engine project with code examples for implementing sound.
 
