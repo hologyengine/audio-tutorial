@@ -2,7 +2,7 @@
 
 This repo is a Hology Engine project with code examples for implementing sound.
 
-Read more about how to use animation with google in the documentation.
+Read more about how to use animation with Holgoy Engine in the documentation.
 https://docs.hology.app/gameplay/sound
 
 ## Running the example
